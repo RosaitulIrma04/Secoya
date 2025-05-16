@@ -42,9 +42,9 @@
 			<div id="top-header">
 				<div class="container">
 					<ul class="header-links pull-left">
-						<li><a href="#"><i class="fa fa-phone"></i> +021-95-51-84</a></li>
-						<li><a href="#"><i class="fa fa-envelope-o"></i> email@email.com</a></li>
-						<li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
+						<li><a href="#"><i class="fa fa-phone"></i> +62 859-4766-7579</a></li>
+						<li><a href="#"><i class="fa fa-envelope-o"></i> Secoya@gmail.com</a></li>
+						<li><a href="#"><i class="fa fa-map-marker"></i> Jl. Lingkar Barat Batuan Sumenep</a></li>
 					</ul>
 					<ul class="header-links pull-right">
 						{{-- <li><a href="#"><i class="fa fa-dollar"></i> USD</a></li> --}}
@@ -114,7 +114,7 @@
 												</div>
 												<div class="product-body">
 													<h3 class="product-name"><a href="#">product name goes here</a></h3>
-													<h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
+													<h4 class="product-price"><span class="qty">1x</span>Rp 300.000</h4>
 												</div>
 												<button class="delete"><i class="fa fa-close"></i></button>
 											</div>
@@ -125,14 +125,14 @@
 												</div>
 												<div class="product-body">
 													<h3 class="product-name"><a href="#">product name goes here</a></h3>
-													<h4 class="product-price"><span class="qty">3x</span>$980.00</h4>
+													<h4 class="product-price"><span class="qty">3x</span>Rp 2.000.000</h4>
 												</div>
 												<button class="delete"><i class="fa fa-close"></i></button>
 											</div>
 										</div>
 										<div class="cart-summary">
 											<small>3 Item(s) selected</small>
-											<h5>SUBTOTAL: $2940.00</h5>
+											<h5>SUBTOTAL: Rp 6.700.000</h5>
 										</div>
 										<div class="cart-btns">
 											<a href="#">View Cart</a>
@@ -173,10 +173,9 @@
 						<li class="active"><a href="#">Home</a></li>
 						<li><a href="#">Hot Deals</a></li>
 						<li><a href="#">Categories</a></li>
-						<li><a href="#">Laptops</a></li>
-						<li><a href="#">Smartphones</a></li>
-						<li><a href="#">Cameras</a></li>
-						<li><a href="#">Accessories</a></li>
+						<li><a href="#">Elektronik</a></li>
+						<li><a href="#">Fashion</a></li>
+						<li><a href="#">Furniture</a></li>
 					</ul>
 					<!-- /NAV -->
 				</div>
@@ -282,7 +281,7 @@
 											<div class="product-body">
 												<p class="product-category">Category</p>
 												<h3 class="product-name"><a href="#">product name goes here</a></h3>
-												<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+												<h4 class="product-price">Rp 150.000 <del class="product-old-price">Rp 250.000</del></h4>
 												<div class="product-rating">
 													<i class="fa fa-star"></i>
 													<i class="fa fa-star"></i>
@@ -313,7 +312,7 @@
 											<div class="product-body">
 												<p class="product-category">Category</p>
 												<h3 class="product-name"><a href="#">product name goes here</a></h3>
-												<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+												<h4 class="product-price">Rp 250.000 <del class="product-old-price">Rp 300.000</del></h4>
 												<div class="product-rating">
 													<i class="fa fa-star"></i>
 													<i class="fa fa-star"></i>
@@ -344,7 +343,7 @@
 											<div class="product-body">
 												<p class="product-category">Category</p>
 												<h3 class="product-name"><a href="#">product name goes here</a></h3>
-												<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+												<h4 class="product-price">Rp 300.000 <del class="product-old-price">Rp 350.000</del></h4>
 												<div class="product-rating">
 												</div>
 												<div class="product-btns">
@@ -367,7 +366,7 @@
 											<div class="product-body">
 												<p class="product-category">Category</p>
 												<h3 class="product-name"><a href="#">product name goes here</a></h3>
-												<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+												<h4 class="product-price">Rp 200.000 <del class="product-old-price">Rp 250.000</del></h4>
 												<div class="product-rating">
 													<i class="fa fa-star"></i>
 													<i class="fa fa-star"></i>
@@ -395,7 +394,7 @@
 											<div class="product-body">
 												<p class="product-category">Category</p>
 												<h3 class="product-name"><a href="#">product name goes here</a></h3>
-												<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+												<h4 class="product-price">Rp 300.000 <del class="product-old-price">Rp 350.000</del></h4>
 												<div class="product-rating">
 													<i class="fa fa-star"></i>
 													<i class="fa fa-star"></i>
@@ -517,7 +516,7 @@
 											<div class="product-body">
 												<p class="product-category">Category</p>
 												<h3 class="product-name"><a href="#">product name goes here</a></h3>
-												<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+												<h4 class="product-price">Rp 300.000 <del class="product-old-price">Rp 300.000</del></h4>
 												<div class="product-rating">
 													<i class="fa fa-star"></i>
 													<i class="fa fa-star"></i>
@@ -548,7 +547,7 @@
 											<div class="product-body">
 												<p class="product-category">Category</p>
 												<h3 class="product-name"><a href="#">product name goes here</a></h3>
-												<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+												<h4 class="product-price">Rp 200.000 <del class="product-old-price">Rp 200.000</del></h4>
 												<div class="product-rating">
 													<i class="fa fa-star"></i>
 													<i class="fa fa-star"></i>
@@ -579,7 +578,7 @@
 											<div class="product-body">
 												<p class="product-category">Category</p>
 												<h3 class="product-name"><a href="#">product name goes here</a></h3>
-												<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+												<h4 class="product-price">Rp 250.000 <del class="product-old-price">Rp 300.000</del></h4>
 												<div class="product-rating">
 												</div>
 												<div class="product-btns">
@@ -602,7 +601,7 @@
 											<div class="product-body">
 												<p class="product-category">Category</p>
 												<h3 class="product-name"><a href="#">product name goes here</a></h3>
-												<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+												<h4 class="product-price">Rp 150.000 <del class="product-old-price">Rp 150.000</del></h4>
 												<div class="product-rating">
 													<i class="fa fa-star"></i>
 													<i class="fa fa-star"></i>
@@ -630,7 +629,7 @@
 											<div class="product-body">
 												<p class="product-category">Category</p>
 												<h3 class="product-name"><a href="#">product name goes here</a></h3>
-												<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+												<h4 class="product-price">Rp 450.000 <del class="product-old-price">Rp 400.000</del></h4>
 												<div class="product-rating">
 													<i class="fa fa-star"></i>
 													<i class="fa fa-star"></i>
@@ -688,7 +687,7 @@
 									<div class="product-body">
 										<p class="product-category">Category</p>
 										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+										<h4 class="product-price">Rp 350.000 <del class="product-old-price">Rp 300.000</del></h4>
 									</div>
 								</div>
 								<!-- /product widget -->
@@ -701,7 +700,7 @@
 									<div class="product-body">
 										<p class="product-category">Category</p>
 										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+										<h4 class="product-price">Rp 250.000 <del class="product-old-price">Rp 200.000</del></h4>
 									</div>
 								</div>
 								<!-- /product widget -->
@@ -714,7 +713,7 @@
 									<div class="product-body">
 										<p class="product-category">Category</p>
 										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+										<h4 class="product-price">Rp 500.000 <del class="product-old-price">Rp 450.00</del></h4>
 									</div>
 								</div>
 								<!-- product widget -->
@@ -729,7 +728,7 @@
 									<div class="product-body">
 										<p class="product-category">Category</p>
 										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+										<h4 class="product-price">Rp 350.000 <del class="product-old-price">Rp 300.00</del></h4>
 									</div>
 								</div>
 								<!-- /product widget -->
@@ -742,7 +741,7 @@
 									<div class="product-body">
 										<p class="product-category">Category</p>
 										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+										<h4 class="product-price">Rp 150.000 <del class="product-old-price">Rp 100.000</del></h4>
 									</div>
 								</div>
 								<!-- /product widget -->
@@ -755,7 +754,7 @@
 									<div class="product-body">
 										<p class="product-category">Category</p>
 										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+										<h4 class="product-price">Rp 450.000 <del class="product-old-price">Rp 400.000</del></h4>
 									</div>
 								</div>
 								<!-- product widget -->
@@ -781,7 +780,7 @@
 									<div class="product-body">
 										<p class="product-category">Category</p>
 										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+										<h4 class="product-price">Rp 100.000 <del class="product-old-price">Rp 50.000</del></h4>
 									</div>
 								</div>
 								<!-- /product widget -->
@@ -794,7 +793,7 @@
 									<div class="product-body">
 										<p class="product-category">Category</p>
 										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+										<h4 class="product-price">Rp 600.000 <del class="product-old-price">Rp 550.000</del></h4>
 									</div>
 								</div>
 								<!-- /product widget -->
@@ -807,7 +806,7 @@
 									<div class="product-body">
 										<p class="product-category">Category</p>
 										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+										<h4 class="product-price">Rp 550.000 <del class="product-old-price">$Rp 500.000</del></h4>
 									</div>
 								</div>
 								<!-- product widget -->
@@ -822,7 +821,7 @@
 									<div class="product-body">
 										<p class="product-category">Category</p>
 										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+										<h4 class="product-price">Rp 450.000 <del class="product-old-price">Rp 400.000</del></h4>
 									</div>
 								</div>
 								<!-- /product widget -->
@@ -835,7 +834,7 @@
 									<div class="product-body">
 										<p class="product-category">Category</p>
 										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+										<h4 class="product-price">Rp 350.000 <del class="product-old-price">Rp 300.000</del></h4>
 									</div>
 								</div>
 								<!-- /product widget -->
@@ -848,7 +847,7 @@
 									<div class="product-body">
 										<p class="product-category">Category</p>
 										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+										<h4 class="product-price">Rp 250.000 <del class="product-old-price">Rp 200.000</del></h4>
 									</div>
 								</div>
 								<!-- product widget -->
@@ -876,7 +875,7 @@
 									<div class="product-body">
 										<p class="product-category">Category</p>
 										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+										<h4 class="product-price">Rp 150.000 <del class="product-old-price">Rp 100.000</del></h4>
 									</div>
 								</div>
 								<!-- /product widget -->
@@ -889,7 +888,7 @@
 									<div class="product-body">
 										<p class="product-category">Category</p>
 										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+										<h4 class="product-price">$Rp 450.000 <del class="product-old-price">Rp 400.000</del></h4>
 									</div>
 								</div>
 								<!-- /product widget -->
@@ -902,7 +901,7 @@
 									<div class="product-body">
 										<p class="product-category">Category</p>
 										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+										<h4 class="product-price">Rp 350.000 <del class="product-old-price">Rp 300.000</del></h4>
 									</div>
 								</div>
 								<!-- product widget -->
@@ -917,7 +916,7 @@
 									<div class="product-body">
 										<p class="product-category">Category</p>
 										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+										<h4 class="product-price">Rp 450.000 <del class="product-old-price">Rp 400.000</del></h4>
 									</div>
 								</div>
 								<!-- /product widget -->
@@ -930,7 +929,7 @@
 									<div class="product-body">
 										<p class="product-category">Category</p>
 										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+										<h4 class="product-price">Rp 550.000 <del class="product-old-price">Rp 500.000</del></h4>
 									</div>
 								</div>
 								<!-- /product widget -->
@@ -943,7 +942,7 @@
 									<div class="product-body">
 										<p class="product-category">Category</p>
 										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+										<h4 class="product-price">Rp 350.000 <del class="product-old-price">Rp 300.000</del></h4>
 									</div>
 								</div>
 								<!-- product widget -->
@@ -1005,11 +1004,11 @@
 						<div class="col-md-3 col-xs-6">
 							<div class="footer">
 								<h3 class="footer-title">About Us</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
+								<p>Secoya adalah toko online yang menjual barang bekas khusus mahasiswa. Kami menyediakan berbagai kebutuhan seperti buku, elektronik, fashion, dan furniture, dengan harga terjangkau dan kualitas tetap terjaga.</p>
 								<ul class="footer-links">
-									<li><a href="#"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
-									<li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
-									<li><a href="#"><i class="fa fa-envelope-o"></i>email@email.com</a></li>
+									<li><a href="#"><i class="fa fa-map-marker"></i>Jl. Lingkar Barat Batuan Sumenep</a></li>
+									<li><a href="#"><i class="fa fa-phone"></i>+62-859-4766-7579</a></li>
+									<li><a href="#"><i class="fa fa-envelope-o"></i>Secoya@gmail.com</a></li>
 								</ul>
 							</div>
 						</div>
