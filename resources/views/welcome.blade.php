@@ -135,7 +135,7 @@
 											<h5>SUBTOTAL: Rp 6.700.000</h5>
 										</div>
 										<div class="cart-btns">
-											<a href="#">View Cart</a>
+											<a href="{{ route('cart.index') }}">View Cart</a>
 											<a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
 										</div>
 									</div>
