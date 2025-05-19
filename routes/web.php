@@ -30,3 +30,4 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 //Arah untuk view chart (lihat keranjang)
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::get('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
+Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
