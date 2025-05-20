@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\WishlistController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -31,3 +32,6 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::get('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
 Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+
+//Arah untuk add to wishlist
+Route::post('/wishlist/add', [\App\Http\Controllers\WishlistController::class, 'add'])->name('wishlist.add');

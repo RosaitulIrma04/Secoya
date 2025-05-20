@@ -2188,3 +2188,28 @@ textarea.input {
     margin-top: 10px;
   }
 }
+
+    .product-btns {
+        display: flex;
+        align-items: center;
+        justify-content: center; /* Membuat semua tombol di tengah */
+        gap: 5px;
+    }
+    .product-btns .add-to-wishlist {
+        background: none;
+        border: none;
+        padding: 0 5px;
+        color: #333;
+        font-size: 16px;
+        vertical-align: middle;
+        box-shadow: none;
+        outline: none;
+        transition: color 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .product-btns .add-to-wishlist:hover {
+        color: #D10024;
+    }
+

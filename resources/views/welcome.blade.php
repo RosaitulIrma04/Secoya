@@ -97,7 +97,7 @@
                                 <a href="#">
                                     <i class="fa fa-heart-o"></i>
                                     <span>Your Wishlist</span>
-                                    <div class="qty">2</div>
+                                    <div class="qty">{{ count(session('wishlist', [])) }}</div>
                                 </a>
                             </div>
                             <!-- /Wishlist -->
@@ -298,8 +298,18 @@
                                                 <i class="fa fa-star"></i>
                                             </div>
                                             <div class="product-btns">
-                                                <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
-                                                        class="tooltipp">add to wishlist</span></button>
+                                                <form class="form-add-to-wishlist" method="POST"
+                                                    action="{{ route('wishlist.add') }}">
+                                                    @csrf
+                                                    <input type="hidden" name="id" value="1">
+                                                    <input type="hidden" name="name" value="product name goes here">
+                                                    <input type="hidden" name="price" value="150000">
+                                                    <input type="hidden" name="image"
+                                                        value="{{ asset('assets/img/product01.png') }}">
+                                                    <button type="submit" class="add-to-wishlist">
+                                                        <i class="fa fa-heart-o"></i>
+                                                    </button>
+                                                </form>
                                                 <button class="add-to-compare"><i class="fa fa-exchange"></i><span
                                                         class="tooltipp">add to compare</span></button>
                                                 <button class="quick-view"><i class="fa fa-eye"></i><span
@@ -344,8 +354,18 @@
                                                 <i class="fa fa-star-o"></i>
                                             </div>
                                             <div class="product-btns">
-                                                <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
-                                                        class="tooltipp">add to wishlist</span></button>
+                                                <form class="form-add-to-wishlist" method="POST"
+                                                    action="{{ route('wishlist.add') }}">
+                                                    @csrf
+                                                    <input type="hidden" name="id" value="2">
+                                                    <input type="hidden" name="name" value="product name goes here">
+                                                    <input type="hidden" name="price" value="250000">
+                                                    <input type="hidden" name="image"
+                                                        value="{{ asset('assets/img/product02.png') }}">
+                                                    <button type="submit" class="add-to-wishlist">
+                                                        <i class="fa fa-heart-o"></i>
+                                                    </button>
+                                                </form>
                                                 <button class="add-to-compare"><i class="fa fa-exchange"></i><span
                                                         class="tooltipp">add to compare</span></button>
                                                 <button class="quick-view"><i class="fa fa-eye"></i><span
@@ -385,8 +405,18 @@
                                             <div class="product-rating">
                                             </div>
                                             <div class="product-btns">
-                                                <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
-                                                        class="tooltipp">add to wishlist</span></button>
+                                                <form class="form-add-to-wishlist" method="POST"
+                                                    action="{{ route('wishlist.add') }}">
+                                                    @csrf
+                                                    <input type="hidden" name="id" value="3">
+                                                    <input type="hidden" name="name" value="product name goes here">
+                                                    <input type="hidden" name="price" value="300000">
+                                                    <input type="hidden" name="image"
+                                                        value="{{ asset('assets/img/product03.png') }}">
+                                                    <button type="submit" class="add-to-wishlist">
+                                                        <i class="fa fa-heart-o"></i>
+                                                    </button>
+                                                </form>
                                                 <button class="add-to-compare"><i class="fa fa-exchange"></i><span
                                                         class="tooltipp">add to compare</span></button>
                                                 <button class="quick-view"><i class="fa fa-eye"></i><span
@@ -428,8 +458,18 @@
                                                 <i class="fa fa-star"></i>
                                             </div>
                                             <div class="product-btns">
-                                                <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
-                                                        class="tooltipp">add to wishlist</span></button>
+                                                <form class="form-add-to-wishlist" method="POST"
+                                                    action="{{ route('wishlist.add') }}">
+                                                    @csrf
+                                                    <input type="hidden" name="id" value="4">
+                                                    <input type="hidden" name="name" value="product name goes here">
+                                                    <input type="hidden" name="price" value="200000">
+                                                    <input type="hidden" name="image"
+                                                        value="{{ asset('assets/img/product04.png') }}">
+                                                    <button type="submit" class="add-to-wishlist">
+                                                        <i class="fa fa-heart-o"></i>
+                                                    </button>
+                                                </form>
                                                 <button class="add-to-compare"><i class="fa fa-exchange"></i><span
                                                         class="tooltipp">add to compare</span></button>
                                                 <button class="quick-view"><i class="fa fa-eye"></i><span
@@ -471,8 +511,18 @@
                                                 <i class="fa fa-star"></i>
                                             </div>
                                             <div class="product-btns">
-                                                <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
-                                                        class="tooltipp">add to wishlist</span></button>
+                                                <form class="form-add-to-wishlist" method="POST"
+                                                    action="{{ route('wishlist.add') }}">
+                                                    @csrf
+                                                    <input type="hidden" name="id" value="5">
+                                                    <input type="hidden" name="name" value="product name goes here">
+                                                    <input type="hidden" name="price" value="300000">
+                                                    <input type="hidden" name="image"
+                                                        value="{{ asset('assets/img/product05.png') }}">
+                                                    <button type="submit" class="add-to-wishlist">
+                                                        <i class="fa fa-heart-o"></i>
+                                                    </button>
+                                                </form>
                                                 <button class="add-to-compare"><i class="fa fa-exchange"></i><span
                                                         class="tooltipp">add to compare</span></button>
                                                 <button class="quick-view"><i class="fa fa-eye"></i><span
@@ -608,8 +658,18 @@
                                                 <i class="fa fa-star"></i>
                                             </div>
                                             <div class="product-btns">
-                                                <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
-                                                        class="tooltipp">add to wishlist</span></button>
+                                                <form class="form-add-to-wishlist" method="POST"
+                                                    action="{{ route('wishlist.add') }}">
+                                                    @csrf
+                                                    <input type="hidden" name="id" value="6">
+                                                    <input type="hidden" name="name" value="product name goes here">
+                                                    <input type="hidden" name="price" value="300000">
+                                                    <input type="hidden" name="image"
+                                                        value="{{ asset('assets/img/product06.png') }}">
+                                                    <button type="submit" class="add-to-wishlist">
+                                                        <i class="fa fa-heart-o"></i>
+                                                    </button>
+                                                </form>
                                                 <button class="add-to-compare"><i class="fa fa-exchange"></i><span
                                                         class="tooltipp">add to compare</span></button>
                                                 <button class="quick-view"><i class="fa fa-eye"></i><span
@@ -654,8 +714,18 @@
                                                 <i class="fa fa-star-o"></i>
                                             </div>
                                             <div class="product-btns">
-                                                <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
-                                                        class="tooltipp">add to wishlist</span></button>
+                                                <form class="form-add-to-wishlist" method="POST"
+                                                    action="{{ route('wishlist.add') }}">
+                                                    @csrf
+                                                    <input type="hidden" name="id" value="7">
+                                                    <input type="hidden" name="name" value="product name goes here">
+                                                    <input type="hidden" name="price" value="200000">
+                                                    <input type="hidden" name="image"
+                                                        value="{{ asset('assets/img/product07.png') }}">
+                                                    <button type="submit" class="add-to-wishlist">
+                                                        <i class="fa fa-heart-o"></i>
+                                                    </button>
+                                                </form>
                                                 <button class="add-to-compare"><i class="fa fa-exchange"></i><span
                                                         class="tooltipp">add to compare</span></button>
                                                 <button class="quick-view"><i class="fa fa-eye"></i><span
@@ -695,8 +765,18 @@
                                             <div class="product-rating">
                                             </div>
                                             <div class="product-btns">
-                                                <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
-                                                        class="tooltipp">add to wishlist</span></button>
+                                                <form class="form-add-to-wishlist" method="POST"
+                                                    action="{{ route('wishlist.add') }}">
+                                                    @csrf
+                                                    <input type="hidden" name="id" value="8">
+                                                    <input type="hidden" name="name" value="product name goes here">
+                                                    <input type="hidden" name="price" value="250000">
+                                                    <input type="hidden" name="image"
+                                                        value="{{ asset('assets/img/product08.png') }}">
+                                                    <button type="submit" class="add-to-wishlist">
+                                                        <i class="fa fa-heart-o"></i>
+                                                    </button>
+                                                </form>
                                                 <button class="add-to-compare"><i class="fa fa-exchange"></i><span
                                                         class="tooltipp">add to compare</span></button>
                                                 <button class="quick-view"><i class="fa fa-eye"></i><span
@@ -738,8 +818,18 @@
                                                 <i class="fa fa-star"></i>
                                             </div>
                                             <div class="product-btns">
-                                                <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
-                                                        class="tooltipp">add to wishlist</span></button>
+                                                <form class="form-add-to-wishlist" method="POST"
+                                                    action="{{ route('wishlist.add') }}">
+                                                    @csrf
+                                                    <input type="hidden" name="id" value="9">
+                                                    <input type="hidden" name="name" value="product name goes here">
+                                                    <input type="hidden" name="price" value="150000">
+                                                    <input type="hidden" name="image"
+                                                        value="{{ asset('assets/img/product09.png') }}">
+                                                    <button type="submit" class="add-to-wishlist">
+                                                        <i class="fa fa-heart-o"></i>
+                                                    </button>
+                                                </form>
                                                 <button class="add-to-compare"><i class="fa fa-exchange"></i><span
                                                         class="tooltipp">add to compare</span></button>
                                                 <button class="quick-view"><i class="fa fa-eye"></i><span
@@ -781,8 +871,18 @@
                                                 <i class="fa fa-star"></i>
                                             </div>
                                             <div class="product-btns">
-                                                <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
-                                                        class="tooltipp">add to wishlist</span></button>
+                                                <form class="form-add-to-wishlist" method="POST"
+                                                    action="{{ route('wishlist.add') }}">
+                                                    @csrf
+                                                    <input type="hidden" name="id" value="10">
+                                                    <input type="hidden" name="name" value="product name goes here">
+                                                    <input type="hidden" name="price" value="450000">
+                                                    <input type="hidden" name="image"
+                                                        value="{{ asset('assets/img/product01.png') }}">
+                                                    <button type="submit" class="add-to-wishlist">
+                                                        <i class="fa fa-heart-o"></i>
+                                                    </button>
+                                                </form>
                                                 <button class="add-to-compare"><i class="fa fa-exchange"></i><span
                                                         class="tooltipp">add to compare</span></button>
                                                 <button class="quick-view"><i class="fa fa-eye"></i><span
@@ -1283,8 +1383,8 @@
         //user harus login sebelum bisa menambahkan ke keranjang
         window.isLoggedIn = {{ Auth::check() ? 'true' : 'false' }};
 
-        //add to cart
         $(document).ready(function() {
+            // Add to cart
             $('.form-add-to-cart').on('submit', function(e) {
                 e.preventDefault();
 
@@ -1332,6 +1432,43 @@
                                 icon: 'success',
                                 title: 'Berhasil!',
                                 text: 'Produk berhasil ditambahkan ke keranjang!',
+                                timer: 1200,
+                                showConfirmButton: false
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Add to wishlist (pakai event delegation)
+            $(document).on('submit', '.form-add-to-wishlist', function(e) {
+                e.preventDefault();
+
+                if (!window.isLoggedIn) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Login Diperlukan',
+                        text: 'Silakan login terlebih dahulu untuk menambah ke wishlist!',
+                        confirmButtonText: 'Ok'
+                    });
+                    return false;
+                }
+
+                var form = $(this);
+                $.ajax({
+                    url: form.attr('action'),
+                    method: "POST",
+                    data: form.serialize(),
+                    success: function(res) {
+                        if (res.success) {
+                            // Update jumlah wishlist di header jika ada
+                            $('.header-ctn .fa-heart-o').siblings('.qty').text(res.wishlist_count);
+
+                            // Tampilkan alert sukses
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Berhasil!',
+                                text: 'Produk berhasil ditambahkan ke wishlist!',
                                 timer: 1200,
                                 showConfirmButton: false
                             });
