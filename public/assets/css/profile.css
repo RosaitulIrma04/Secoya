@@ -1,0 +1,128 @@
+body {
+    font-family: 'Montserrat', Arial, sans-serif;
+    background: linear-gradient(120deg, #e0eafc 0%, #cfdef3 100%);
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.profile-container {
+    max-width: 480px;
+    margin: 60px auto;
+    background: #fff;
+    padding: 38px 40px 32px 40px;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(52, 152, 219, 0.13);
+    border: 2px solid #D10024; /* Sesuaikan warna utama */
+    transition: box-shadow 0.3s;
+}
+
+.profile-container:hover {
+    box-shadow: 0 12px 40px rgba(52, 152, 219, 0.18);
+}
+
+.profile-title {
+    font-weight: 700;
+    margin-bottom: 32px;
+    color: #D10024; /* Warna utama */
+    letter-spacing: 1px;
+    text-align: center;
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #2B2D42;
+    margin-bottom: 7px;
+    display: block;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.form-control,
+textarea.form-control {
+    background: #FBFBFC;
+    border: 1px solid #E4E7ED;
+    color: #333;
+    font-size: 16px;
+    border-radius: 7px;
+    padding: 10px 14px;
+    width: 100%;
+    transition: border 0.2s;
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+
+.form-control:focus,
+textarea.form-control:focus {
+    border: 1.5px solid #D10024;
+    outline: none;
+    background: #f7f7f7;
+}
+
+textarea.form-control {
+    resize: none;
+    min-height: 48px;
+}
+
+.btn {
+    padding: 10px 28px;
+    border-radius: 40px;
+    font-size: 15px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(52, 152, 219, 0.07);
+    text-transform: uppercase;
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+
+.btn-primary {
+    text-decoration: none;
+    background: #D10024;
+    color: #FFF;
+}
+
+.btn-primary:hover {
+    background: #a8001a;
+    color: #FFF;
+}
+
+.btn-success {
+    background: #27ae60;
+    color: #fff;
+}
+
+.btn-success:hover {
+    background: #219150;
+}
+
+.btn-secondary {
+    background: #8D99AE;
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background: #2B2D42;
+    color: #fff;
+}
+
+.profile-container .btn + .btn {
+    margin-left: 10px;
+}
+
+@media (max-width: 600px) {
+    .profile-container {
+        padding: 18px 4vw 18px 4vw;
+    }
+    .profile-title {
+        font-size: 1.3rem;
+    }
+}

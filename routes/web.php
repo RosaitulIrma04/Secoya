@@ -50,3 +50,13 @@ Route::get('/dashboard-pembeli', [App\Http\Controllers\PembeliController::class,
 
 // Arah untuk mengatur dashboard pembeli
 Route::get('/pembeli', [App\Http\Controllers\PembeliController::class, 'index'])->name('pembeli.index');
+
+// Melihat akun pembeli
+Route::get('/profile', function () {
+    return view('pembeli.profile', [
+        'user' => Auth::user()
+    ]);
+})->name('profile.show')->middleware('auth');
+
+// Tambahkan di routes/web.php
+Route::post('/profile/update', [App\Http\Controllers\PembeliController::class, 'updateProfile'])->name('profile.update')->middleware('auth');

@@ -51,23 +51,20 @@
                 </ul>
                 <ul class="header-links pull-right">
                     {{-- Dropdown My Account --}}
-                    <li class="dropdown" style="position: relative;">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                            <i class="fa fa-user-o"></i> My Account <span class="caret"></span>
+                    <li>
+                        <a href="{{ route('profile.show') }}" id="lihat-akun-btn"
+                            style="font-family: 'Montserrat', Arial, sans-serif; font-size: 13px;">
+                            <i class="fa fa-user-o"></i> Lihat Akun
                         </a>
-                        <ul class="dropdown-menu" style="right:0; left:auto; min-width:180px; position:absolute;">
-                            <li>
-                                <a href="#" id="lihat-akun-btn"><i class="fa fa-user"></i> Lihat Akun</a>
-                            </li>
-                            <li>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="margin:0;">
-                                    @csrf
-                                    <button type="submit" style="background:none;border:none;padding:8px 20px;width:100%;text-align:left;">
-                                        <i class="fa fa-sign-out"></i> Logout
-                                    </button>
-                                </form>
-                            </li>
-                        </ul>
+                    </li>
+                    <li>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="margin:0;">
+                            @csrf
+                            <button type="submit"
+                                style="background:none;border:none;padding:8px 20px;width:100%;text-align:left;font-family: 'Montserrat', Arial, sans-serif; font-size: 13px; color: #fff">
+                                <i class="fa fa-sign-out"></i> Logout
+                            </button>
+                        </form>
                     </li>
                 </ul>
             </div>
@@ -134,8 +131,10 @@
                                                     <img src="{{ $item['image'] }}" alt="">
                                                 </div>
                                                 <div class="product-body">
-                                                    <h3 class="product-name"><a href="#">{{ $item['name'] }}</a></h3>
-                                                    <h4 class="product-price"><span class="qty">{{ $item['quantity'] }}x</span>Rp
+                                                    <h3 class="product-name"><a href="#">{{ $item['name'] }}</a>
+                                                    </h3>
+                                                    <h4 class="product-price"><span
+                                                            class="qty">{{ $item['quantity'] }}x</span>Rp
                                                         {{ number_format($item['price'], 0, ',', '.') }}</h4>
                                                 </div>
                                                 <!-- Tombol hapus item bisa ditambahkan di sini -->
@@ -145,15 +144,17 @@
                                         @endforelse
                                     </div>
                                     <div class="cart-summary">
-                                        <small>{{ array_sum(array_column($cart, 'quantity')) }} Item(s) selected</small>
+                                        <small>{{ array_sum(array_column($cart, 'quantity')) }} Item(s)
+                                            selected</small>
                                         <h5>
                                             SUBTOTAL: Rp
-                                            {{ number_format(collect($cart)->sum(function($item){ return $item['price'] * $item['quantity']; }), 0, ',', '.') }}
+                                            {{ number_format(collect($cart)->sum(function ($item) {return $item['price'] * $item['quantity'];}),0,',','.') }}
                                         </h5>
                                     </div>
                                     <div class="cart-btns">
                                         <a href="{{ route('cart.index') }}">View Cart</a>
-                                        <a href="{{ route('cart.checkout') }}">Checkout <i class="fa fa-arrow-circle-right"></i>
+                                        <a href="{{ route('cart.checkout') }}">Checkout <i
+                                                class="fa fa-arrow-circle-right"></i>
                                         </a>
                                     </div>
                                 </div>
@@ -313,7 +314,8 @@
                                                     action="{{ route('wishlist.add') }}">
                                                     @csrf
                                                     <input type="hidden" name="id" value="1">
-                                                    <input type="hidden" name="name" value="product name goes here">
+                                                    <input type="hidden" name="name"
+                                                        value="product name goes here">
                                                     <input type="hidden" name="price" value="150000">
                                                     <input type="hidden" name="image"
                                                         value="{{ asset('assets/img/product01.png') }}">
@@ -369,7 +371,8 @@
                                                     action="{{ route('wishlist.add') }}">
                                                     @csrf
                                                     <input type="hidden" name="id" value="2">
-                                                    <input type="hidden" name="name" value="product name goes here">
+                                                    <input type="hidden" name="name"
+                                                        value="product name goes here">
                                                     <input type="hidden" name="price" value="250000">
                                                     <input type="hidden" name="image"
                                                         value="{{ asset('assets/img/product02.png') }}">
@@ -420,7 +423,8 @@
                                                     action="{{ route('wishlist.add') }}">
                                                     @csrf
                                                     <input type="hidden" name="id" value="3">
-                                                    <input type="hidden" name="name" value="product name goes here">
+                                                    <input type="hidden" name="name"
+                                                        value="product name goes here">
                                                     <input type="hidden" name="price" value="300000">
                                                     <input type="hidden" name="image"
                                                         value="{{ asset('assets/img/product03.png') }}">
@@ -473,7 +477,8 @@
                                                     action="{{ route('wishlist.add') }}">
                                                     @csrf
                                                     <input type="hidden" name="id" value="4">
-                                                    <input type="hidden" name="name" value="product name goes here">
+                                                    <input type="hidden" name="name"
+                                                        value="product name goes here">
                                                     <input type="hidden" name="price" value="200000">
                                                     <input type="hidden" name="image"
                                                         value="{{ asset('assets/img/product04.png') }}">
@@ -526,7 +531,8 @@
                                                     action="{{ route('wishlist.add') }}">
                                                     @csrf
                                                     <input type="hidden" name="id" value="5">
-                                                    <input type="hidden" name="name" value="product name goes here">
+                                                    <input type="hidden" name="name"
+                                                        value="product name goes here">
                                                     <input type="hidden" name="price" value="300000">
                                                     <input type="hidden" name="image"
                                                         value="{{ asset('assets/img/product05.png') }}">
@@ -673,7 +679,8 @@
                                                     action="{{ route('wishlist.add') }}">
                                                     @csrf
                                                     <input type="hidden" name="id" value="6">
-                                                    <input type="hidden" name="name" value="product name goes here">
+                                                    <input type="hidden" name="name"
+                                                        value="product name goes here">
                                                     <input type="hidden" name="price" value="300000">
                                                     <input type="hidden" name="image"
                                                         value="{{ asset('assets/img/product06.png') }}">
@@ -729,7 +736,8 @@
                                                     action="{{ route('wishlist.add') }}">
                                                     @csrf
                                                     <input type="hidden" name="id" value="7">
-                                                    <input type="hidden" name="name" value="product name goes here">
+                                                    <input type="hidden" name="name"
+                                                        value="product name goes here">
                                                     <input type="hidden" name="price" value="200000">
                                                     <input type="hidden" name="image"
                                                         value="{{ asset('assets/img/product07.png') }}">
@@ -780,7 +788,8 @@
                                                     action="{{ route('wishlist.add') }}">
                                                     @csrf
                                                     <input type="hidden" name="id" value="8">
-                                                    <input type="hidden" name="name" value="product name goes here">
+                                                    <input type="hidden" name="name"
+                                                        value="product name goes here">
                                                     <input type="hidden" name="price" value="250000">
                                                     <input type="hidden" name="image"
                                                         value="{{ asset('assets/img/product08.png') }}">
@@ -833,7 +842,8 @@
                                                     action="{{ route('wishlist.add') }}">
                                                     @csrf
                                                     <input type="hidden" name="id" value="9">
-                                                    <input type="hidden" name="name" value="product name goes here">
+                                                    <input type="hidden" name="name"
+                                                        value="product name goes here">
                                                     <input type="hidden" name="price" value="150000">
                                                     <input type="hidden" name="image"
                                                         value="{{ asset('assets/img/product09.png') }}">
@@ -886,7 +896,8 @@
                                                     action="{{ route('wishlist.add') }}">
                                                     @csrf
                                                     <input type="hidden" name="id" value="10">
-                                                    <input type="hidden" name="name" value="product name goes here">
+                                                    <input type="hidden" name="name"
+                                                        value="product name goes here">
                                                     <input type="hidden" name="price" value="450000">
                                                     <input type="hidden" name="image"
                                                         value="{{ asset('assets/img/product01.png') }}">
@@ -1384,32 +1395,34 @@
     <!-- /FOOTER -->
 
     <!-- Modal Lihat Akun -->
-<div class="modal fade" id="modalLihatAkun" tabindex="-1" role="dialog" aria-labelledby="modalAkunLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content" style="border-radius:8px;">
-      <div class="modal-header" style="border-bottom:1px solid #eee;">
-        <h4 class="modal-title" id="modalAkunLabel"><i class="fa fa-user"></i> Profil Akun</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="font-size:28px;">&times;</button>
-      </div>
-      <div class="modal-body">
-        <table class="table table-borderless">
-          <tr>
-            <th style="width:120px;">Nama</th>
-            <td>{{ Auth::user()->name }}</td>
-          </tr>
-          <tr>
-            <th>Email</th>
-            <td>{{ Auth::user()->email }}</td>
-          </tr>
-          <!-- Tambahkan field lain jika ada -->
-        </table>
-      </div>
-      <div class="modal-footer" style="border-top:1px solid #eee;">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-      </div>
+    <div class="modal fade" id="modalLihatAkun" tabindex="-1" role="dialog"
+        aria-labelledby="modalAkunLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="border-radius:8px;">
+                <div class="modal-header" style="border-bottom:1px solid #eee;">
+                    <h4 class="modal-title" id="modalAkunLabel"><i class="fa fa-user"></i> Profil Akun</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                        style="font-size:28px;">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-borderless">
+                        <tr>
+                            <th style="width:120px;">Nama</th>
+                            <td>{{ Auth::user()->name }}</td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td>{{ Auth::user()->email }}</td>
+                        </tr>
+                        <!-- Tambahkan field lain jika ada -->
+                    </table>
+                </div>
+                <div class="modal-footer" style="border-top:1px solid #eee;">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 
     <!-- jQuery Plugins -->
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
@@ -1418,13 +1431,13 @@
     <script src="{{ asset('assets/js/nouislider.min.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.zoom.min.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
-        <script>
-        $(function() {
-    $('#lihat-akun-btn').on('click', function(e) {
-        e.preventDefault();
-        $('#modalLihatAkun').modal('show');
-    });
-});
+    <script>
+        // $(function() {
+        //     $('#lihat-akun-btn').on('click', function(e) {
+        //         e.preventDefault();
+        //         $('#modalLihatAkun').modal('show');
+        //     });
+        // });
         //user harus login sebelum bisa menambahkan ke keranjang
         window.isLoggedIn = {{ Auth::check() ? 'true' : 'false' }};
 
@@ -1452,7 +1465,8 @@
                     success: function(res) {
                         if (res.success) {
                             // Update jumlah cart
-                            $('.header-ctn .fa-shopping-cart').siblings('.qty').text(res.cart_count);
+                            $('.header-ctn .fa-shopping-cart').siblings('.qty').text(res
+                                .cart_count);
 
                             // Render ulang isi cart di header
                             var cartList = $('.cart-dropdown .cart-list');
@@ -1507,7 +1521,8 @@
                     success: function(res) {
                         if (res.success) {
                             // Update jumlah wishlist di header jika ada
-                            $('.header-ctn .fa-heart-o').siblings('.qty').text(res.wishlist_count);
+                            $('.header-ctn .fa-heart-o').siblings('.qty').text(res
+                                .wishlist_count);
 
                             // Tampilkan alert sukses
                             Swal.fire({
@@ -1524,4 +1539,5 @@
         });
     </script>
 </body>
+
 </html>

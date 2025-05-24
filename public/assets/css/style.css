@@ -416,6 +416,16 @@ textarea.input {
   background-color: #1E1F29;
 }
 
+.header-links .dropdown-menu {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+.header-links .dropdown:hover .dropdown-menu {
+    display: block;
+    opacity: 1;
+}
+
 .header-links li {
   display: inline-block;
   margin-right: 15px;
