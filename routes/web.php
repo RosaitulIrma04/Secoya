@@ -21,9 +21,10 @@ Route::get('/penjual', function () {
     return view('penjual');
 });
 
-
 // Arah untuk login
-Route::get('/login', function() { return view('auth.login'); })->name('login');
+Route::get('/login', function () {
+    return view('auth.login');
+})->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 
 // Arah untuk register
@@ -38,7 +39,7 @@ Route::get('/checkout', [CartController::class, 'checkout'])->name('cart.checkou
 Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
 Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update');
 Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
-
+Route::get('/halaman-sindiran', [CartController::class, 'showOnWelcome'])->name('sindiran');
 // Arah untuk add to wishlist
 Route::post('/wishlist/add', [\App\Http\Controllers\WishlistController::class, 'add'])->name('wishlist.add');
 
@@ -53,12 +54,18 @@ Route::get('/pembeli', [App\Http\Controllers\PembeliController::class, 'index'])
 // Melihat akun pembeli
 Route::get('/profile', function () {
     return view('pembeli.profile', [
-        'user' => Auth::user()
+        'user' => Auth::user(),
     ]);
-})->name('profile.show')->middleware('auth');
+})
+    ->name('profile.show')
+    ->middleware('auth');
 
 // Tambahkan di routes/web.php
-Route::post('/profile/update', [App\Http\Controllers\PembeliController::class, 'updateProfile'])->name('profile.update')->middleware('auth');
+Route::post('/profile/update', [App\Http\Controllers\PembeliController::class, 'updateProfile'])
+    ->name('profile.update')
+    ->middleware('auth');
 
 //Arah untuk your wishlist
-Route::get('/wishlist', [WishlistController::class, 'index'])->middleware('auth')->name('wishlist.index');
+Route::get('/wishlist', [WishlistController::class, 'index'])
+    ->middleware('auth')
+    ->name('wishlist.index');

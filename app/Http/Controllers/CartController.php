@@ -96,4 +96,16 @@ class CartController extends Controller
             'total' => $total,
         ]);
     }
+
+    public function showOnWelcome()
+{
+    $cart = session()->get('cart', []);
+    $cartCount = array_sum(array_column($cart, 'quantity'));
+    $total = collect($cart)->sum(function ($item) {
+        return $item['price'] * $item['quantity'];
+    });
+
+    return view('sindiran', compact('cart'));
+}
+
 }
