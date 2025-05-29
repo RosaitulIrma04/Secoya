@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use App\Models\Wishlist;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -45,4 +45,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-}
+
+// app/Models/User.php
+
+public function wishlists()
+{
+    return $this->hasMany(Wishlist::class);
+}}

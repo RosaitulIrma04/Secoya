@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
@@ -8,8 +9,6 @@ use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\PembeliController;
-
-
 
 Route::get('/', function () {
     return view('welcome');
@@ -60,3 +59,6 @@ Route::get('/profile', function () {
 
 // Tambahkan di routes/web.php
 Route::post('/profile/update', [App\Http\Controllers\PembeliController::class, 'updateProfile'])->name('profile.update')->middleware('auth');
+
+//Arah untuk your wishlist
+Route::get('/wishlist', [WishlistController::class, 'index'])->middleware('auth')->name('wishlist.index');
