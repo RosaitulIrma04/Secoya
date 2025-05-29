@@ -19,5 +19,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
             'password' => Hash::make('1234'), // Menggunakan Hash::make() untuk password
         ]);
+        $this->call(AdminSeeder::class);
     }
+
 }
