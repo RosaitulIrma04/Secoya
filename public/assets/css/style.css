@@ -503,37 +503,41 @@ textarea.input {
 	Cart
 \*----------------------------*/
 
+/* CSS Asli Anda dengan sedikit modifikasi */
 .header-ctn {
-  float: right;
+    position: relative;
+  /* float: right; /* Dihapus agar bisa menggunakan flexbox untuk alignment yang lebih baik */
+  display: flex; /* Menggunakan flexbox untuk menyejajarkan item */
+  align-items: center; /* Menyejajarkan item secara vertikal di tengah */
   padding: 15px 0px;
 }
 
-.header-ctn>div {
-  display: inline-block;
+.header-ctn > div {
+  display: inline-block; /* Tetap inline-block jika diperlukan, tapi flex item akan mengaturnya */
 }
 
-.header-ctn>div+div {
+.header-ctn > div + div {
   margin-left: 15px;
 }
 
-.header-ctn>div>a {
+.header-ctn > div > a {
   display: block;
   position: relative;
-  width: 90px;
+  width: 90px; /* Anda mungkin ingin menyesuaikan ini atau membuatnya lebih fleksibel */
   text-align: center;
-  color: #FFF;
+  color: #FFF; /* Pastikan warna ini sesuai dengan latar belakang header Anda */
 }
 
-.header-ctn>div>a>i {
+.header-ctn > div > a > i {
   display: block;
   font-size: 18px;
 }
 
-.header-ctn>div>a>span {
+.header-ctn > div > a > span {
   font-size: 12px;
 }
 
-.header-ctn>div>a>.qty {
+.header-ctn > div > a > .qty {
   position: absolute;
   right: 15px;
   top: -10px;
@@ -544,13 +548,14 @@ textarea.input {
   border-radius: 50%;
   font-size: 10px;
   color: #FFF;
-  background-color: #D10024;
+  background-color: #D10024; /* Warna badge notifikasi */
 }
 
 .header-ctn .menu-toggle {
-  display: none;
+  display: none; /* Biasanya untuk tampilan mobile */
 }
 
+/* CSS untuk Cart Dropdown (tidak diubah, hanya disertakan untuk kelengkapan) */
 .cart-dropdown {
   position: absolute;
   width: 300px;
@@ -564,7 +569,7 @@ textarea.input {
   visibility: hidden;
 }
 
-.dropdown.open>.cart-dropdown {
+.dropdown.open > .cart-dropdown {
   opacity: 1;
   visibility: visible;
 }
@@ -595,12 +600,12 @@ textarea.input {
 }
 
 .cart-dropdown .cart-btns {
-  margin: 0px -17px -17px;
+  margin: 0px -17px -17px; /* Perhatikan nilai negatif ini, mungkin perlu disesuaikan */
 }
 
-.cart-dropdown .cart-btns>a {
+.cart-dropdown .cart-btns > a {
   display: inline-block;
-  width: calc(50% - 0px);
+  width: calc(50% - 0px); /* Ini akan membuat lebar 50% */
   padding: 12px;
   background-color: #D10024;
   color: #FFF;
@@ -610,12 +615,12 @@ textarea.input {
   transition: 0.2s all;
 }
 
-.cart-dropdown .cart-btns>a:first-child {
-  margin-right: -4px;
+.cart-dropdown .cart-btns > a:first-child {
+  margin-right: -4px; /* Untuk mengatasi spasi antar inline-block jika ada */
   background-color: #1e1f29;
 }
 
-.cart-dropdown .cart-btns>a:hover {
+.cart-dropdown .cart-btns > a:hover {
   opacity: 0.9;
 }
 
@@ -623,6 +628,13 @@ textarea.input {
   border-top: 1px solid #E4E7ED;
   padding-top: 15px;
   padding-bottom: 15px;
+}
+
+/* Navigation Style (tidak diubah) */
+#navigation {
+  background: #FFF;
+  border-bottom: 2px solid #E4E7ED;
+  border-top: 3px solid #D10024;
 }
 
 /*=========================================================
@@ -633,7 +645,7 @@ textarea.input {
   background: #FFF;
   border-bottom: 2px solid #E4E7ED;
   border-top: 3px solid #D10024;
-}
+} */
 
 /*----------------------------*\
 	Main nav

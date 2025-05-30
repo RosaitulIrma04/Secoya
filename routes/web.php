@@ -55,7 +55,23 @@ Route::get('/login', function () {
 })->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 
-// --- PERUBAHAN DI SINI ---
+// penjual
+Route::get('/dashboard-penjual', [PenjualController::class, 'index'])
+    ->middleware('auth')
+    ->name('dashboard.penjual');
+    Route::get('/dashboard/penjual', [PenjualController::class, 'index'])->name('dashboard.penjual');
+
+// Tampilkan form register penjual
+Route::get('/register/penjual', [PenjualController::class, 'showRegistrationForm'])->name('register.penjual');
+// Proses submit form register penjual
+Route::post('/register/penjual', [PenjualController::class, 'register'])->name('register.penjual.submit');
+// Form login penjual
+Route::get('/login/penjual', [PenjualController::class, 'showLoginForm'])->name('login.penjual');
+// Proses login penjual
+Route::post('/login/penjual', [PenjualController::class, 'login'])->name('login.penjual.submit');
+
+
+
 // Arah untuk register (menampilkan form dan memproses registrasi menggunakan PembeliController)
 Route::get('/register', [PembeliController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [PembeliController::class, 'register'])->name('register.submit');
@@ -77,6 +93,9 @@ Route::post('/wishlist/add', [\App\Http\Controllers\WishlistController::class, '
 Route::get('/dashboard-pembeli', [PembeliController::class, 'index'])
     ->middleware('auth')
     ->name('dashboard.pembeli');
+
+// Dashboard Penjual
+
 
 // Arah untuk mengatur dashboard pembeli (ini sama dengan /dashboard-pembeli, mungkin bisa disatukan atau salah satunya dihapus jika fungsinya sama)
 Route::get('/pembeli', [PembeliController::class, 'index'])->name('pembeli.index')->middleware('auth');

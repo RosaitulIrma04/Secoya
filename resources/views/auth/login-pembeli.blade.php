@@ -4,187 +4,146 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login atau Daftar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f2f5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px 0;
-            color: #333;
+            font-family: 'Inter', sans-serif;
+            background-image: linear-gradient(135deg, #f6f9fc 0%, #e9eef3 100%);
         }
-
-        .auth-container {
-            background-color: #fff;
-            padding: 30px 40px;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 450px;
+        .auth-card {
+            animation: fadeInCard 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(30px) scale(0.98);
         }
-
-        .auth-tabs {
-            display: flex;
-            margin-bottom: 25px;
-            border-bottom: 1px solid #ddd;
+        @keyframes fadeInCard {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
-
-        .auth-tab-button {
-            flex-grow: 1;
-            padding: 10px 15px;
-            cursor: pointer;
-            text-align: center;
-            background-color: transparent;
-            border: none;
-            font-size: 16px;
-            font-weight: bold;
-            color: #666;
-            position: relative; /* Untuk garis bawah aktif */
-        }
-
-        .auth-tab-button.active {
-            color: #007bff;
-        }
-        .auth-tab-button.active::after { /* Garis bawah untuk tab aktif */
-            content: '';
-            position: absolute;
-            bottom: -1px; /* Tepat di atas border-bottom container tabs */
-            left: 0;
-            right: 0;
-            height: 2px;
-            background-color: #007bff;
-        }
-
 
         .auth-form-content {
             display: none; /* Sembunyikan semua form content by default */
+            animation: fadeInFormContent 0.5s ease-out;
         }
-
         .auth-form-content.active {
             display: block; /* Tampilkan hanya form content yang aktif */
         }
-
-        .form-group {
-            margin-bottom: 20px;
+        @keyframes fadeInFormContent {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            font-size: 14px;
+        .tab-button {
+            transition: all 0.3s ease-in-out;
+        }
+        .tab-button.active {
+            border-color: #4f46e5; /* indigo-600 */
+            color: #4f46e5;
+            background-color: #eef2ff; /* indigo-50 */
+        }
+        .tab-button:not(.active):hover {
+            background-color: #f9fafb; /* gray-50 */
         }
 
-        .form-control {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 14px;
-            box-sizing: border-box;
+        input[type="email"], input[type="password"], input[type="text"] {
+            transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
 
-        .btn-submit-login { /* Tombol login */
-            width: 100%;
-            padding: 12px;
-            background-color: #007bff;
-            border: none;
-            border-radius: 8px;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
+        .alert-danger-tailwind {
+            background-color: #fee2e2; /* red-100 */
+            border-left-width: 4px;
+            border-color: #ef4444; /* red-500 */
+            color: #b91c1c; /* red-700 */
+            padding: 1rem; /* p-4 */
+            margin-bottom: 1.5rem; /* mb-6 */
+            border-radius: 0.375rem; /* rounded-md */
         }
-        .btn-submit-login:hover {
-            background-color: #0056b3;
-        }
-
-        .btn-submit-register { /* Tombol register */
-            width: 100%;
-            padding: 12px;
-            background-color: #28a745;
-            border: none;
-            border-radius: 8px;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .btn-submit-register:hover {
-            background-color: #218838;
-        }
-
-        .alert {
-            padding: 10px 15px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            font-size: 14px;
-        }
-
-        .alert-danger {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-
-        .invalid-feedback {
-            color: #dc3545;
-            font-size: 0.875em;
-            display: block;
-            margin-top: 4px;
+        .invalid-feedback-tailwind {
+            color: #ef4444; /* red-500 */
+            font-size: 0.875rem; /* text-sm */
+            margin-top: 0.25rem; /* mt-1 */
         }
     </style>
 </head>
-<body>
-    <div class="auth-container">
-        <div class="auth-tabs">
-            <button class="auth-tab-button active" onclick="showForm('login')">Login</button>
-            <button class="auth-tab-button" onclick="showForm('register')">Daftar</button>
+<body class="flex items-center justify-center min-h-screen p-4">
+
+    <div class="auth-card bg-white p-8 md:p-10 rounded-xl shadow-2xl w-full max-w-md">
+        <div class="text-center mb-8">
+            <i class="fas fa-users fa-3x text-indigo-600 mb-3"></i>
+            <h1 class="text-2xl font-bold text-gray-800">Akses Akun Anda</h1>
+            <p class="text-gray-500 mt-1">Silakan login atau buat akun baru.</p>
         </div>
 
-        {{-- FORM LOGIN --}}
-        <div id="login-form" class="auth-form-content active">
-            <h2>Login Pembeli</h2>
+        <div class="flex border-b border-gray-200 mb-6">
+            <button id="loginTabButton" class="tab-button flex-1 py-3 px-4 text-center font-semibold text-gray-600 hover:text-indigo-600 border-b-2 border-transparent focus:outline-none">
+                Login
+            </button>
+            <button id="registerTabButton" class="tab-button flex-1 py-3 px-4 text-center font-semibold text-gray-600 hover:text-indigo-600 border-b-2 border-transparent focus:outline-none">
+                Daftar
+            </button>
+        </div>
+
+        <!-- {{-- FORM LOGIN --}} -->
+        <div id="login-form" class="auth-form-content">
+            <h2 class="text-xl font-semibold text-gray-700 mb-6 text-center">Login Akun</h2>
+
             @if (session('error') && (old('form_type') == 'login' || !old('form_type') && !($errors->has('name') || $errors->has('password_confirmation')) ) )
-                <div class="alert alert-danger">
+                <div class="alert-danger-tailwind" role="alert">
                     {{ session('error') }}
                 </div>
             @endif
             @if ($errors->any() && (old('form_type') == 'login' || !old('form_type') && !($errors->has('name') || $errors->has('password_confirmation')) ) && !session('error'))
-                <div class="alert alert-danger">
-                    Terjadi kesalahan pada input login.
+                <div class="alert-danger-tailwind" role="alert">
+                    Terjadi kesalahan pada input login. Silakan periksa kembali.
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('login') }}">
+            <form method="POST" action="{{ route('login') }}" class="space-y-6">
                 @csrf
-                <input type="hidden" name="form_type" value="login"> {{-- Penanda form --}}
+                <input type="hidden" name="form_type" value="login">
 
-                <div class="form-group">
-                    <label for="login_email">Alamat Email</label>
-                    <input id="login_email" type="email" class="form-control @error('email', 'login') is-invalid @enderror" name="email" value="{{ old('form_type') == 'login' ? old('email') : '' }}" required autocomplete="email" autofocus placeholder="Masukkan email Anda">
+                <div>
+                    <label for="login_email" class="block text-sm font-medium text-gray-700 mb-1">Alamat Email</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                            <i class="fas fa-envelope text-gray-400"></i>
+                        </span>
+                        <input id="login_email" type="email" name="email" value="{{ old('form_type') == 'login' ? old('email') : '' }}" required autocomplete="email" autofocus placeholder="Masukkan email Anda"
+                               class="block w-full pl-10 pr-3 py-2.5 border @error('email', 'login') border-red-500 @else border-gray-300 @enderror rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
                     @error('email', 'login')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
+                        <p class="invalid-feedback-tailwind" role="alert">{{ $message }}</p>
                     @enderror
                 </div>
 
-                <div class="form-group">
-                    <label for="login_password">Password</label>
-                    <input id="login_password" type="password" class="form-control @error('password', 'login') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Masukkan password Anda">
+                <div>
+                    <label for="login_password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                            <i class="fas fa-lock text-gray-400"></i>
+                        </span>
+                        <input id="login_password" type="password" name="password" required autocomplete="current-password" placeholder="Masukkan password Anda"
+                               class="block w-full pl-10 pr-3 py-2.5 border @error('password', 'login') border-red-500 @else border-gray-300 @enderror rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
                     @error('password', 'login')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
+                        <p class="invalid-feedback-tailwind" role="alert">{{ $message }}</p>
                     @enderror
                 </div>
 
-                <div class="form-group">
-                    <button type="submit" class="btn-submit-login">
+                <div class="flex items-center justify-between text-sm">
+                    <div class="flex items-center">
+                        <input id="remember_me_login_tailwind" name="remember" type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                        <label for="remember_me_login_tailwind" class="ml-2 block text-gray-900">Ingat saya</label>
+                    </div>
+                    <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Lupa kata sandi?</a>
+                </div>
+
+                <div>
+                    <button type="submit"
+                            class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-transform transform hover:scale-105">
                         Login
                     </button>
                 </div>
@@ -193,54 +152,74 @@
 
         {{-- FORM REGISTRASI --}}
         <div id="register-form" class="auth-form-content">
-            <h2>Buat Akun Baru</h2>
+            <h2 class="text-xl font-semibold text-gray-700 mb-6 text-center">Buat Akun Baru</h2>
+
             @if ($errors->any() && old('form_type') == 'register')
-                 <div class="alert alert-danger">
-                    Terjadi kesalahan pada input registrasi.
+                <div class="alert-danger-tailwind" role="alert">
+                     Terjadi kesalahan pada input registrasi. Silakan periksa kembali.
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('register.submit') }}"> {{-- Sesuaikan nama rute jika berbeda --}}
+            <form method="POST" action="{{ route('register.submit') }}" class="space-y-5">
                 @csrf
-                <input type="hidden" name="form_type" value="register"> {{-- Penanda form --}}
+                <input type="hidden" name="form_type" value="register">
 
-                <div class="form-group">
-                    <label for="register_name">Nama Lengkap</label>
-                    <input id="register_name" type="text" class="form-control @error('name', 'register') is-invalid @enderror" name="name" value="{{ old('form_type') == 'register' ? old('name') : '' }}" required autocomplete="name" placeholder="Masukkan nama lengkap Anda">
+                <div>
+                    <label for="register_name" class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                            <i class="fas fa-user text-gray-400"></i>
+                        </span>
+                        <input id="register_name" type="text" name="name" value="{{ old('form_type') == 'register' ? old('name') : '' }}" required autocomplete="name" placeholder="Masukkan nama lengkap Anda"
+                               class="block w-full pl-10 pr-3 py-2.5 border @error('name', 'register') border-red-500 @else border-gray-300 @enderror rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
                     @error('name', 'register')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
+                        <p class="invalid-feedback-tailwind" role="alert">{{ $message }}</p>
                     @enderror
                 </div>
 
-                <div class="form-group">
-                    <label for="register_email">Alamat Email</label>
-                    <input id="register_email" type="email" class="form-control @error('email', 'register') is-invalid @enderror" name="email" value="{{ old('form_type') == 'register' ? old('email') : '' }}" required autocomplete="email" placeholder="Masukkan email Anda">
-                    @error('email', 'register') {{-- Menggunakan error bag 'register' --}}
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
+                <div>
+                    <label for="register_email" class="block text-sm font-medium text-gray-700 mb-1">Alamat Email</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                            <i class="fas fa-envelope text-gray-400"></i>
                         </span>
+                        <input id="register_email" type="email" name="email" value="{{ old('form_type') == 'register' ? old('email') : '' }}" required autocomplete="email" placeholder="Masukkan email Anda"
+                               class="block w-full pl-10 pr-3 py-2.5 border @error('email', 'register') border-red-500 @else border-gray-300 @enderror rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    @error('email', 'register')
+                        <p class="invalid-feedback-tailwind" role="alert">{{ $message }}</p>
                     @enderror
                 </div>
 
-                <div class="form-group">
-                    <label for="register_password">Password</label>
-                    <input id="register_password" type="password" class="form-control @error('password', 'register') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Buat password (min. 6 karakter)">
-                    @error('password', 'register')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
+                <div>
+                    <label for="register_password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                            <i class="fas fa-lock text-gray-400"></i>
                         </span>
+                        <input id="register_password" type="password" name="password" required autocomplete="new-password" placeholder="Buat password (min. 6 karakter)"
+                               class="block w-full pl-10 pr-3 py-2.5 border @error('password', 'register') border-red-500 @else border-gray-300 @enderror rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                     @error('password', 'register')
+                        <p class="invalid-feedback-tailwind" role="alert">{{ $message }}</p>
                     @enderror
                 </div>
 
-                <div class="form-group">
-                    <label for="register_password_confirmation">Konfirmasi Password</label>
-                    <input id="register_password_confirmation" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Ketik ulang password Anda">
+                <div>
+                    <label for="register_password_confirmation" class="block text-sm font-medium text-gray-700 mb-1">Konfirmasi Password</label>
+                    <div class="relative">
+                         <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                            <i class="fas fa-check-circle text-gray-400"></i>
+                        </span>
+                        <input id="register_password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password" placeholder="Ketik ulang password Anda"
+                               class="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <button type="submit" class="btn-submit-register">
+                <div class="pt-1">
+                    <button type="submit"
+                            class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-transform transform hover:scale-105">
                         Daftar Akun
                     </button>
                 </div>
@@ -249,62 +228,68 @@
     </div>
 
     <script>
-        function showForm(formName) {
-            // Sembunyikan semua form content
-            document.querySelectorAll('.auth-form-content').forEach(function(form) {
-                form.classList.remove('active');
-            });
-            // Sembunyikan semua tab button active state
-            document.querySelectorAll('.auth-tab-button').forEach(function(button) {
-                button.classList.remove('active');
-            });
-
-            // Tampilkan form dan tab yang dipilih
-            document.getElementById(formName + '-form').classList.add('active');
-            event.currentTarget.classList.add('active'); // Menambahkan class active ke tombol yang diklik
-        }
-
-        // Logika untuk menentukan tab aktif berdasarkan error atau parameter URL
         document.addEventListener('DOMContentLoaded', function() {
-            let defaultForm = 'login'; // Default ke login
+            const loginTabButton = document.getElementById('loginTabButton');
+            const registerTabButton = document.getElementById('registerTabButton');
+            const loginForm = document.getElementById('login-form');
+            const registerForm = document.getElementById('register-form');
 
-            // Cek apakah ada error spesifik dari registrasi untuk mengaktifkan tab registrasi
-            @if ($errors->hasBag('register') || ($errors->any() && old('form_type') === 'register'))
-                defaultForm = 'register';
-            @elseif ($errors->any() && old('form_type') === 'login')
-                defaultForm = 'login';
-            @endif
+            function showForm(formToShow, tabToActivate) {
+                if (formToShow === 'login') {
+                    loginForm.classList.add('active');
+                    registerForm.classList.remove('active');
+                    loginTabButton.classList.add('active');
+                    registerTabButton.classList.remove('active');
+                } else {
+                    registerForm.classList.add('active');
+                    loginForm.classList.remove('active');
+                    registerTabButton.classList.add('active');
+                    loginTabButton.classList.remove('active');
+                }
+            }
 
-            // Cek parameter URL (misalnya /auth?form=register)
+            loginTabButton.addEventListener('click', function(event) {
+                event.preventDefault();
+                showForm('login', this);
+            });
+
+            registerTabButton.addEventListener('click', function(event) {
+                event.preventDefault();
+                showForm('register', this);
+            });
+
+            // --- Logika untuk menentukan form default berdasarkan error atau parameter URL ---
+            // Blade akan mengevaluasi kondisi ini di server dan mencetak string 'register' atau 'login'.
+            let serverDeterminedForm = `{{
+                ($errors->hasBag('register') || ($errors->any() && old('form_type') === 'register'))
+                ? 'register'
+                : ((($errors->any() && old('form_type') === 'login') || session('error'))
+                    ? 'login'
+                    : 'login')
+            }}`;
+
+            // Inisialisasi defaultForm dengan nilai dari server, atau 'login' jika tidak valid
+            let defaultForm = (serverDeterminedForm === 'register' || serverDeterminedForm === 'login') ? serverDeterminedForm : 'login';
+
+            // Override dengan parameter URL jika ada
             const urlParams = new URLSearchParams(window.location.search);
             const formParam = urlParams.get('form');
             if (formParam === 'register' || formParam === 'login') {
                 defaultForm = formParam;
             }
 
-            // Cek fragment URL (misalnya /auth#register)
-            const hash = window.location.hash.substring(1); // Menghilangkan '#'
+            // Override dengan fragment URL jika ada (prioritas lebih tinggi dari param URL)
+            const hash = window.location.hash.substring(1);
             if (hash === 'register' || hash === 'login') {
                 defaultForm = hash;
             }
 
-
             // Tampilkan form default dan set tombol tab yang sesuai
-            document.getElementById(defaultForm + '-form').classList.add('active');
-            document.querySelector('.auth-tab-button[onclick="showForm(\'' + defaultForm + '\')"]').classList.add('active');
-
-            // Jika ada error, pastikan tab yang salah tetap aktif
-            @if ($errors->any())
-                const formTypeWithError = '{{ old("form_type") }}';
-                if (formTypeWithError) {
-                    // Hapus 'active' dari default jika berbeda dan set yang benar
-                    document.querySelectorAll('.auth-form-content').forEach(form => form.classList.remove('active'));
-                    document.querySelectorAll('.auth-tab-button').forEach(button => button.classList.remove('active'));
-
-                    document.getElementById(formTypeWithError + '-form').classList.add('active');
-                    document.querySelector('.auth-tab-button[onclick="showForm(\'' + formTypeWithError + '\')"]').classList.add('active');
-                }
-            @endif
+            if (defaultForm === 'register') {
+                showForm('register', registerTabButton);
+            } else {
+                showForm('login', loginTabButton); // Default akhir adalah login
+            }
         });
     </script>
 </body>
