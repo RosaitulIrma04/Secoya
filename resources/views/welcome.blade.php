@@ -49,8 +49,18 @@
                     <li><a href="#"><i class="fa fa-map-marker"></i> Jl. Lingkar Barat Batuan Sumenep</a></li>
                 </ul>
                 <ul class="header-links pull-right">
-                    {{-- <li><a href="#"><i class="fa fa-dollar"></i> USD</a></li> --}}
-                    <li><a href="{{ route('login') }}"><i class="fa fa-user-o"></i> My Account</a></li>
+                    <!-- My Account Dropdown -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-user-o"></i> My Account <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ route('login.pembeli') }}">Login Pembeli</a></li>
+                            <li><a href="{{ route('login.penjual') }}">Login Penjual</a></li>
+                        </ul>
+                    </li>
+
+
                 </ul>
             </div>
         </div>

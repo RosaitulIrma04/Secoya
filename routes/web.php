@@ -10,6 +10,8 @@ use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\PembeliController;
+use App\Http\Controllers\PenjualController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -26,6 +28,11 @@ Route::get('/penjual', function () {
 Route::get('/admin/login', [AdminLoginController::class, 'showLoginForm'])->name('admin.login');
 Route::post('/admin/login', [AdminLoginController::class, 'login']);
 Route::post('/admin/logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
+
+//Route untuk login pembeli dan penjual
+Route::get('/login/pembeli', [AuthController::class, 'showLoginPembeli'])->name('login.pembeli');
+Route::get('/login/penjual', [AuthController::class, 'showLoginPenjual'])->name('login.penjual');
+
 
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
