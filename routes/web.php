@@ -10,7 +10,6 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\PembeliController;
 use App\Http\Controllers\PenjualController;
 use App\Http\Controllers\ProfileController;
@@ -33,10 +32,9 @@ Route::get('/admin/login', [AdminLoginController::class, 'showLoginForm'])->name
 Route::post('/admin/login', [AdminLoginController::class, 'login']);
 Route::post('/admin/logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
 
-// Route untuk Admin Dashboard Utama (KPI) - Sekarang menggunakan AdminDashboardController
-Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])
-    ->middleware('auth:admin')
-    ->name('admin.dashboard');
+Route::get('/admin/dashboard', function () {
+    return view('admin.dashboard');
+})->middleware('auth:admin')->name('admin.dashboard');
 
 // Route untuk Kelola Produk oleh Admin
 Route::get('/admin/products', [AdminProductController::class, 'index'])
@@ -45,16 +43,11 @@ Route::get('/admin/products', [AdminProductController::class, 'index'])
 
 Route::delete('/admin/products/{product}', [AdminProductController::class, 'destroy'])
     ->middleware('auth:admin')
-    ->name('admin.products.destroy'); // {product} adalah route model binding
+    ->name('admin.products.destroy');
 
 //Route untuk login pembeli dan penjual
 Route::get('/login/pembeli', [AuthController::class, 'showLoginPembeli'])->name('login.pembeli');
 Route::get('/login/penjual', [AuthController::class, 'showLoginPenjual'])->name('login.penjual');
-
-
-Route::get('/admin/dashboard', function () {
-    return view('admin.dashboard');
-})->middleware('auth:admin')->name('admin.dashboard');
 
 // Arah untuk login
 Route::get('/login', function () {
@@ -62,8 +55,10 @@ Route::get('/login', function () {
 })->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 
-// Arah untuk register
-Route::post('/register', [RegisterController::class, 'register']);
+// --- PERUBAHAN DI SINI ---
+// Arah untuk register (menampilkan form dan memproses registrasi menggunakan PembeliController)
+Route::get('/register', [PembeliController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [PembeliController::class, 'register'])->name('register.submit');
 
 // Arah untuk logout
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
@@ -79,24 +74,28 @@ Route::get('/halaman-sindiran', [CartController::class, 'showOnWelcome'])->name(
 Route::post('/wishlist/add', [\App\Http\Controllers\WishlistController::class, 'add'])->name('wishlist.add');
 
 // Arah untuk ke dashboard pembeli
-Route::get('/dashboard-pembeli', [App\Http\Controllers\PembeliController::class, 'index'])
+Route::get('/dashboard-pembeli', [PembeliController::class, 'index'])
     ->middleware('auth')
     ->name('dashboard.pembeli');
 
-// Arah untuk mengatur dashboard pembeli
-Route::get('/pembeli', [App\Http\Controllers\PembeliController::class, 'index'])->name('pembeli.index');
+// Arah untuk mengatur dashboard pembeli (ini sama dengan /dashboard-pembeli, mungkin bisa disatukan atau salah satunya dihapus jika fungsinya sama)
+Route::get('/pembeli', [PembeliController::class, 'index'])->name('pembeli.index')->middleware('auth');
 
 // Melihat akun pembeli
 Route::get('/profile', function () {
-    return view('pembeli.profile', [
+    // Pastikan pengguna sudah login untuk mengakses profil
+    if (!Auth::check()) {
+        return redirect()->route('login')->with('info', 'Silakan login untuk melihat profil.');
+    }
+    return view('pembeli.profile', [ // Sesuaikan path view jika perlu
         'user' => Auth::user(),
     ]);
 })
     ->name('profile.show')
     ->middleware('auth');
 
-// Tambahkan di routes/web.php
-Route::post('/profile/update', [App\Http\Controllers\PembeliController::class, 'updateProfile'])
+// Update profil pembeli
+Route::post('/profile/update', [PembeliController::class, 'updateProfile'])
     ->name('profile.update')
     ->middleware('auth');
 
@@ -105,20 +104,11 @@ Route::get('/wishlist', [WishlistController::class, 'index'])
     ->middleware('auth')
     ->name('wishlist.index');
 
-Route::get('/wishlist', [WishlistController::class, 'index'])->middleware('auth')->name('wishlist.index');
-
-Route::middleware(['auth', CheckRole::class . ':pembeli']);
-
+// Middleware group untuk pembeli
 Route::middleware(['auth', CheckRole::class . ':pembeli'])->group(function () {
     Route::get('/my-account', [ProfileController::class, 'show'])->name('myaccount');
     Route::get('/my-account/edit', [ProfileController::class, 'edit'])->name('myaccount.edit');
     Route::post('/my-account/update', [ProfileController::class, 'update'])->name('myaccount.update');
-
-
-// Route untuk form register pembeli
-Route::get('/register/pembeli', [AuthController::class, 'showRegisterForm'])->name('register.pembeli');
-
-// Route untuk mengirim data register pembeli
-Route::post('/register/pembeli', [AuthController::class, 'register'])->name('register.pembeli.post');
-
+    Route::get('/register/pembeli', [AuthController::class, 'showRegisterForm'])->name('register.pembeli');
+    Route::post('/register/pembeli', [AuthController::class, 'register'])->name('register.pembeli.post');
 });

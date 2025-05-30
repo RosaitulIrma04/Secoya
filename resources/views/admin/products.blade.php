@@ -347,10 +347,10 @@
                 <a href="{{ route('admin.products.index') }}" class="{{ request()->routeIs('admin.products.index') ? 'active' : '' }}">
                     <i class="fas fa-box"></i> <span>Kelola Produk</span>
                 </a>
-                {{-- Tambahkan link manajemen lainnya di sini --}}
-                {{-- <a href="#"> <i class="fas fa-shopping-cart"></i> <span>Kelola Pesanan</span> </a> --}}
-                {{-- <a href="#"> <i class="fas fa-store-alt"></i> <span>Kelola Merchant</span> </a> --}}
-                {{-- <a href="#"> <i class="fas fa-users"></i> <span>Kelola User Pembeli</span> </a> --}}
+
+                <a href="#"> <i class="fas fa-shopping-cart"></i> <span>Kelola Pesanan</span> </a>
+                <a href="#"> <i class="fas fa-store-alt"></i> <span>Kelola Merchant</span> </a>
+                <a href="#"> <i class="fas fa-users"></i> <span>Kelola User Pembeli</span> </a>
             </div>
         </nav>
         <div class="logout-section">

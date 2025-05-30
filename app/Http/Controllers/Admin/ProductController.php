@@ -41,7 +41,7 @@ class ProductController extends Controller
 
         // Kirim data ke view admin utama (dashboard.blade.php Anda)
         // dengan flag untuk menampilkan bagian 'manage_products'
-        return view('admin.dashboard', [ // Ganti 'admin.dashboard' dengan 'dashboard' jika itu nama file Anda
+        return view('admin.products', [ // Ganti 'admin.dashboard' dengan 'dashboard' jika itu nama file Anda
             'show_section' => 'manage_products',
             'products' => $products,
             'search' => $search,
