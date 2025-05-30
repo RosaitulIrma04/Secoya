@@ -58,7 +58,7 @@
                             <li><a href="{{ route('login.pembeli') }}">Login Pembeli</a></li>
                             <li><a href="{{ route('login.penjual') }}">Login Penjual</a></li>
                         </ul>
-                    </li>
+                    </li>>
 
 
                 </ul>
@@ -1409,10 +1409,11 @@
     <script src="{{ asset('assets/js/jquery.zoom.min.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
     <script>
-        //user harus login sebelum bisa menambahkan ke keranjang
+        // Variabel global untuk status login (dari kode asli Anda)
         window.isLoggedIn = {{ Auth::check() ? 'true' : 'false' }};
 
         $(document).ready(function() {
+            // === KODE ASLI ANDA UNTUK CART & WISHLIST ===
             // Add to cart
             $('.form-add-to-cart').on('submit', function(e) {
                 e.preventDefault();
@@ -1430,42 +1431,102 @@
 
                 var form = $(this);
                 $.ajax({
-                    url: "{{ route('cart.add') }}",
+                    url: "{{ route('cart.add') }}", // Pastikan route ini ada
                     method: "POST",
                     data: form.serialize(),
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                            'content') // Penting untuk request POST Laravel
+                    },
                     success: function(res) {
                         if (res.success) {
                             // Update jumlah cart
-                            $('.header-ctn .fa-shopping-cart').siblings('.qty').text(res
-                                .cart_count);
+                            // Sesuaikan selector ini jika berbeda di HTML Anda
+                            var cartQtyElement = $('.header-ctn .fa-shopping-cart').siblings(
+                                '.qty');
+                            if (cartQtyElement.length) {
+                                cartQtyElement.text(res.cart_count);
+                            } else {
+                                // Fallback jika struktur sedikit berbeda atau untuk debugging
+                                console.log("Elemen qty keranjang tidak ditemukan, jumlah: " +
+                                    res.cart_count);
+                            }
+
 
                             // Render ulang isi cart di header
+                            // Sesuaikan selector '.cart-dropdown .cart-list' jika berbeda
                             var cartList = $('.cart-dropdown .cart-list');
-                            cartList.empty();
-                            res.cart_items.forEach(function(item) {
-                                cartList.append(`
+                            cartList.empty(); // Kosongkan list sebelum menambah item baru
+                            if (res.cart_items && res.cart_items.length > 0) {
+                                res.cart_items.forEach(function(item) {
+                                    // Pastikan properti item.image, item.name, item.quantity, item.price ada dan benar
+                                    let itemPriceFormatted = parseInt(item.price)
+                                        .toLocaleString('id-ID');
+                                    cartList.append(`
                                     <div class="product-widget">
                                         <div class="product-img">
-                                            <img src="${item.image}" alt="">
+                                            <img src="${item.image_url || './img/product-placeholder.png'}" alt="${item.name || 'Produk'}">
                                         </div>
                                         <div class="product-body">
-                                            <h3 class="product-name"><a href="#">${item.name}</a></h3>
-                                            <h4 class="product-price"><span class="qty">${item.quantity}x</span>Rp ${parseInt(item.price).toLocaleString('id-ID')}</h4>
+                                            <h3 class="product-name"><a href="#">${item.name || 'Nama Produk'}</a></h3>
+                                            <h4 class="product-price"><span class="qty">${item.quantity || 0}x</span>Rp ${itemPriceFormatted}</h4>
                                         </div>
-                                        <button class="delete"><i class="fa fa-close"></i></button>
+                                        {{-- Tombol delete di cart dropdown bisa memerlukan fungsionalitas AJAX terpisah --}}
+                                        {{-- <button class="delete" data-id="${item.id}"><i class="fa fa-close"></i></button> --}}
                                     </div>
                                 `);
-                            });
+                                });
+                                // Update total keranjang jika ada di response dan elemennya ada
+                                if (res.cart_total_formatted && $(
+                                        '.cart-dropdown .cart-summary small').length) {
+                                    $('.cart-dropdown .cart-summary small').text(res
+                                        .cart_count + ' Item terpilih');
+                                }
+                                if (res.cart_total_formatted && $(
+                                        '.cart-dropdown .cart-summary h5').length) {
+                                    $('.cart-dropdown .cart-summary h5').text('SUBTOTAL: Rp ' +
+                                        res.cart_total_formatted);
+                                }
+                            } else {
+                                cartList.append(
+                                    '<p class="text-center my-3">Keranjang Anda kosong.</p>'
+                                    );
+                                if ($('.cart-dropdown .cart-summary small').length) {
+                                    $('.cart-dropdown .cart-summary small').text(
+                                        '0 Item terpilih');
+                                }
+                                if ($('.cart-dropdown .cart-summary h5').length) {
+                                    $('.cart-dropdown .cart-summary h5').text('SUBTOTAL: Rp 0');
+                                }
+                            }
+
 
                             // Tampilkan alert sukses
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Berhasil!',
-                                text: 'Produk berhasil ditambahkan ke keranjang!',
+                                text: res.message ||
+                                    'Produk berhasil ditambahkan ke keranjang!', // Ambil pesan dari response jika ada
                                 timer: 1200,
                                 showConfirmButton: false
                             });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Gagal',
+                                text: res.message ||
+                                    'Gagal menambahkan produk ke keranjang.',
+                            });
                         }
+                    },
+                    error: function(xhr, status, error) {
+                        // Tangani error AJAX
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Terjadi kesalahan saat menghubungi server. Silakan coba lagi.',
+                        });
+                        console.error("AJAX Error:", xhr.responseText);
                     }
                 });
             });
@@ -1486,27 +1547,56 @@
 
                 var form = $(this);
                 $.ajax({
-                    url: form.attr('action'),
+                    url: form.attr('action'), // URL diambil dari atribut action form
                     method: "POST",
                     data: form.serialize(),
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                            'content') // Penting untuk request POST Laravel
+                    },
                     success: function(res) {
                         if (res.success) {
                             // Update jumlah wishlist di header jika ada
-                            $('.header-ctn .fa-heart-o').siblings('.qty').text(res
-                                .wishlist_count);
+                            // Sesuaikan selector ini jika berbeda di HTML Anda
+                            var wishlistQtyElement = $('.header-ctn .fa-heart-o').siblings(
+                                '.qty');
+                            if (wishlistQtyElement.length) {
+                                wishlistQtyElement.text(res.wishlist_count);
+                            } else {
+                                console.log("Elemen qty wishlist tidak ditemukan, jumlah: " +
+                                    res.wishlist_count);
+                            }
 
                             // Tampilkan alert sukses
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Berhasil!',
-                                text: 'Produk berhasil ditambahkan ke wishlist!',
+                                text: res.message ||
+                                    'Produk berhasil ditambahkan ke wishlist!', // Ambil pesan dari response
                                 timer: 1200,
                                 showConfirmButton: false
                             });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Gagal',
+                                text: res.message ||
+                                    'Gagal menambahkan produk ke wishlist.',
+                            });
                         }
+                    },
+                    error: function(xhr, status, error) {
+                        // Tangani error AJAX
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Terjadi kesalahan saat menghubungi server. Silakan coba lagi.',
+                        });
+                        console.error("AJAX Error:", xhr.responseText);
                     }
                 });
             });
+
         });
     </script>
 </body>

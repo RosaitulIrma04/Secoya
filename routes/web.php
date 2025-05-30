@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\Auth\AdminLoginController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +30,20 @@ Route::get('/penjual', function () {
 Route::get('/admin/login', [AdminLoginController::class, 'showLoginForm'])->name('admin.login');
 Route::post('/admin/login', [AdminLoginController::class, 'login']);
 Route::post('/admin/logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
+
+// Route untuk Admin Dashboard Utama (KPI) - Sekarang menggunakan AdminDashboardController
+Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])
+    ->middleware('auth:admin')
+    ->name('admin.dashboard');
+
+// Route untuk Kelola Produk oleh Admin
+Route::get('/admin/products', [AdminProductController::class, 'index'])
+    ->middleware('auth:admin')
+    ->name('admin.products.index');
+
+Route::delete('/admin/products/{product}', [AdminProductController::class, 'destroy'])
+    ->middleware('auth:admin')
+    ->name('admin.products.destroy'); // {product} adalah route model binding
 
 //Route untuk login pembeli dan penjual
 Route::get('/login/pembeli', [AuthController::class, 'showLoginPembeli'])->name('login.pembeli');
