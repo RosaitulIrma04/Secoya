@@ -47,4 +47,29 @@ public function showLoginPenjual()
         
         return redirect('/');
     }
+    public function showRegisterForm()
+    {
+        return view('auth.register-pembeli');
+    }
+
+    public function register(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
+        $user = \App\Models\User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'role' => 'pembeli',
+        ]);
+
+        Auth::login($user);
+
+        return redirect()->route('dashboard.pembeli');
+    }
 }
+

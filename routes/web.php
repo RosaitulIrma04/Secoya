@@ -11,6 +11,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\PembeliController;
 use App\Http\Controllers\PenjualController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Middleware\CheckRole;
 
 
 Route::get('/', function () {
@@ -89,3 +91,18 @@ Route::get('/wishlist', [WishlistController::class, 'index'])
 
 Route::get('/wishlist', [WishlistController::class, 'index'])->middleware('auth')->name('wishlist.index');
 
+Route::middleware(['auth', CheckRole::class . ':pembeli']);
+
+Route::middleware(['auth', CheckRole::class . ':pembeli'])->group(function () {
+    Route::get('/my-account', [ProfileController::class, 'show'])->name('myaccount');
+    Route::get('/my-account/edit', [ProfileController::class, 'edit'])->name('myaccount.edit');
+    Route::post('/my-account/update', [ProfileController::class, 'update'])->name('myaccount.update');
+
+
+// Route untuk form register pembeli
+Route::get('/register/pembeli', [AuthController::class, 'showRegisterForm'])->name('register.pembeli');
+
+// Route untuk mengirim data register pembeli
+Route::post('/register/pembeli', [AuthController::class, 'register'])->name('register.pembeli.post');
+
+});
