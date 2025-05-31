@@ -196,13 +196,14 @@
             <div id="responsive-nav">
                 <!-- NAV -->
                 <ul class="main-nav nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Hot Deals</a></li>
-                    <li><a href="#">Categories</a></li>
-                    <li><a href="#">Elektronik</a></li>
-                    <li><a href="#">Fashion</a></li>
+                    <li class="active" style="margin-right: 15px;"><a href="#">Home</a></li>
+                    <li style="margin-right: 15px;"><a href="#">Hot Deals</a></li>
+                    <li style="margin-right: 15px;"><a href="#">Categories</a></li>
+                    <li style="margin-right: 15px;"><a href="#">Elektronik</a></li>
+                    <li style="margin-right: 15px;"><a href="#">Fashion</a></li>
                     <li><a href="#">Furniture</a></li>
                 </ul>
+
                 <!-- /NAV -->
             </div>
             <!-- /responsive-nav -->
@@ -1490,7 +1491,7 @@
                             } else {
                                 cartList.append(
                                     '<p class="text-center my-3">Keranjang Anda kosong.</p>'
-                                    );
+                                );
                                 if ($('.cart-dropdown .cart-summary small').length) {
                                     $('.cart-dropdown .cart-summary small').text(
                                         '0 Item terpilih');
